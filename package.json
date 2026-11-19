@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "loose-change-agent",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.ts",
+    "network": "node tools/agentify-skill/scripts/build_network.mjs site/loose_change_agent.hocon --manifest site/agent-manifest.json && node tools/agentify-skill/scripts/build_network.mjs demo/pocketbook/pocketbook_coach.hocon --manifest demo/pocketbook/agent-manifest.json",
+    "pages": "node tools/pages.ts",
+    "demo": "node tools/demo-local.ts",
+    "serve": "node tools/agentify-skill/scripts/serve_site.mjs site --port 8080",
+    "test": "tsc --noEmit && node --test \"tests/*.test.ts\""
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

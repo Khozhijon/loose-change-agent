@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "pocketbook_coach"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}

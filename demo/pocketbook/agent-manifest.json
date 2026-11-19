@@ -1,0 +1,30 @@
+{
+  "brand": "Pocketbook",
+  "networks": [
+    {
+      "name": "pocketbook_coach",
+      "front_man": "pocketbook_coach",
+      "hocon": "./pocketbook_coach.network.json",
+      "description": "I explain your monthly budget. Ask me to review your statement: I will ask Loose Change, another site, and you pick the file in its window.",
+      "tags": ["agentified-website", "demo"],
+      "sample_queries": [
+        "How is my budget set up?",
+        "Review my bank statement privately and tell me which budget lines I am over.",
+        "Which of my budget lines usually eat the most money?"
+      ]
+    }
+  ],
+  "llm_router": { "base_url": "https://api.otari.ai/api/v1", "mock": false, "byok_router": "https://api.otari.ai/api/v1" },
+  "allowed_peers": ["https://khozhijon.github.io"],
+  "peer_policy": { "mode": "closed", "deny_origins": [], "note": "Calls the Loose Change agent site after the visitor agrees on a card." },
+  "agent_mcp": { "protocol": "nsdeploy-agent-mcp/v1", "network": "pocketbook_coach", "front_man": "pocketbook_coach", "available": false, "reason": "This is a static bundle; a public MCP facade requires an application host." },
+  "theme": { "primary": "#2f6b3f" },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [{ "network": "pocketbook_coach", "front_man": "pocketbook_coach", "aliases": ["pocketbook_coach"], "url": "pocketbook_coach" }],
+    "imports": [],
+    "link_updates": { "mode": "browser-local" }
+  },
+  "deployment": { "mode": "static", "self_contained_runtime": true, "browser_mock": false, "direct_byok": true, "direct_mcp_requires_cors": true, "public_mcp_facade": false },
+  "actions": { "version": 1, "module": "./site-actions.js", "bridge": "./bridge/action-bridge.html", "agentTools": ["get_budget"] }
+}

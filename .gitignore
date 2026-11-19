@@ -1,0 +1,20 @@
+node_modules/
+_pages/
+_local-demo/
+.env*
+*.key
+.DS_Store
+.claude/
+submission/
+# bundled output, rebuilt by "npm run build" in CI
+site/main.js
+site/site.js
+site/site-actions.js
+site/chunks/
+site/bridge/bridge-actions.js
+demo/pocketbook/main.js
+demo/pocketbook/site.js
+demo/pocketbook/site-actions.js
+demo/pocketbook/chunks/
+demo/pocketbook/runtime/
+demo/pocketbook/style.css

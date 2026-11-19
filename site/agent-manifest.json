@@ -1,0 +1,84 @@
+{
+  "brand": "Loose Change",
+  "networks": [
+    {
+      "name": "loose_change_agent",
+      "front_man": "loose_change_agent",
+      "hocon": "./loose_change_agent.network.json",
+      "description": "I find forgotten subscriptions, price rises, double charges and bank fees in a bank statement. Load one on the page, add your AI key below, then ask me.",
+      "tags": [
+        "agentified-website",
+        "personal-finance",
+        "privacy"
+      ],
+      "sample_queries": [
+        "Load the sample statement and tell me what looks off.",
+        "Load the sample statement and add up what I spent eating out in September 2026.",
+        "Load the sample statement and list my regular charges with what each costs per year.",
+        "Load the sample statement, find the merchants you do not know and put them in the right categories.",
+        "Load the sample statement and save a report of what you find.",
+        "Cancel my Netflix subscription for me."
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only. This site calls no other site; other sites call it."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "loose_change_agent",
+    "front_man": "loose_change_agent",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#a84d24"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "loose_change_agent",
+        "front_man": "loose_change_agent",
+        "aliases": [
+          "loose_change_agent"
+        ],
+        "url": "loose_change_agent"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_statement_state",
+      "load_sample_statement",
+      "set_categories",
+      "query_spending",
+      "save_report",
+      "categorise_merchants",
+      "review_statement_privately"
+    ]
+  }
+}

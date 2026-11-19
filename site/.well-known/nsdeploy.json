@@ -1,0 +1,17 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "loose_change_agent",
+      "front_man": "loose_change_agent",
+      "aliases": [
+        "loose_change_agent"
+      ],
+      "url": "loose_change_agent"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}

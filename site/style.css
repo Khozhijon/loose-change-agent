@@ -1,0 +1,410 @@
+:root {
+  --paper: #f4efe4;
+  --card: #fffdf7;
+  --ink: #1d2721;
+  --soft: #5f665c;
+  --line: #d8d0bd;
+  --line-soft: #e8e2d2;
+  --copper: #a84d24;
+  --copper-soft: #f3dfd0;
+  --green: #2a6a3f;
+  --red: #a82e28;
+  --focus: #1f5fbf;
+  --shadow: 0 1px 0 rgba(40, 30, 10, 0.06), 0 8px 24px -14px rgba(40, 30, 10, 0.35);
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #151915;
+    --card: #1d221d;
+    --ink: #ece7da;
+    --soft: #a3a899;
+    --line: #353c33;
+    --line-soft: #2a302a;
+    --copper: #e08a5c;
+    --copper-soft: #3a2a20;
+    --green: #7cc490;
+    --red: #ee8079;
+    --focus: #8ab4ff;
+    --shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 10px 26px -16px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* One ink per category, shared by chips, chart segments and swatches. */
+.c-housing { --c: #4b5d8f } .c-bills { --c: #2f7f86 } .c-groceries { --c: #4f8a3c } .c-eating_out { --c: #c2562d }
+.c-coffee { --c: #8a5a2b } .c-transport { --c: #6a6fb5 } .c-travel { --c: #2c8fc0 } .c-subscriptions { --c: #b0407c }
+.c-shopping { --c: #b98a12 } .c-health { --c: #2f8f6e } .c-education { --c: #7b4fa3 } .c-fun { --c: #d0703c }
+.c-fees { --c: #b3312b } .c-cash { --c: #6b7366 } .c-other { --c: #8d8778 } .c-transfers { --c: #7d858c } .c-income { --c: #2f6b3f }
+@media (prefers-color-scheme: dark) {
+  .c-housing { --c: #8fa3dc } .c-bills { --c: #5fbcc4 } .c-groceries { --c: #8cc777 } .c-eating_out { --c: #ee8a62 }
+  .c-coffee { --c: #c99a67 } .c-transport { --c: #a3a7ea } .c-travel { --c: #63bdea } .c-subscriptions { --c: #e57fb5 }
+  .c-shopping { --c: #e0b848 } .c-health { --c: #62c7a3 } .c-education { --c: #b48ad8 } .c-fun { --c: #f0996a }
+  .c-fees { --c: #ee7a73 } .c-cash { --c: #a2aa9c } .c-other { --c: #b3ad9d } .c-transfers { --c: #a9b1b8 } .c-income { --c: #7cc490 }
+}
+
+* { box-sizing: border-box }
+html { -webkit-text-size-adjust: 100% }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.5 var(--sans);
+  background-image: radial-gradient(rgba(120, 100, 60, 0.07) 1px, transparent 1px); background-size: 22px 22px;
+}
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; padding: 0 }
+ul, ol { list-style: none }
+button, input, select { font: inherit; color: inherit }
+button { cursor: pointer }
+code { font-family: var(--mono); font-size: 0.86em; background: var(--line-soft); padding: 0.1em 0.35em; border-radius: 4px; overflow-wrap: anywhere }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px }
+[hidden] { display: none !important }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--card); padding: 8px 12px; border-radius: 6px; z-index: 20 }
+.skip:focus { left: 8px }
+.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap }
+.muted { color: var(--soft) }
+.warn { color: var(--red) }
+
+.top { max-width: 1080px; margin: 0 auto; padding: 18px 20px 6px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font: 600 1.3rem/1 var(--serif); letter-spacing: 0.01em }
+.brand svg { width: 34px; height: 34px }
+.coin { fill: var(--copper); }
+.coin-in { fill: none; stroke: var(--card); stroke-width: 1.2; stroke-dasharray: 1.5 2.2 }
+.coin-mark { fill: none; stroke: var(--card); stroke-width: 2.6; stroke-linecap: round }
+.pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 14px 7px 11px; font-size: 0.88rem }
+.pill:hover { border-color: var(--green) }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px color-mix(in srgb, var(--green) 22%, transparent) }
+
+main { max-width: 1080px; margin: 0 auto; padding: 8px 20px 40px }
+
+/* Start page */
+.start { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 44px; align-items: start; padding-top: 28px }
+.start h1 { font: 600 clamp(2rem, 4.6vw, 3.15rem)/1.08 var(--serif); letter-spacing: -0.01em; text-wrap: balance }
+.lead { margin-top: 16px; font-size: 1.12rem; color: var(--soft); max-width: 34em }
+.lead strong { color: var(--ink) }
+.drop { margin-top: 26px; border: 2px dashed var(--line); border-radius: 14px; background: var(--card); padding: 26px 22px; text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s }
+.drop:hover, .drop.over { border-color: var(--copper); background: color-mix(in srgb, var(--copper-soft) 55%, var(--card)) }
+.drop svg { width: 44px; height: 44px; margin-bottom: 6px }
+.sheet { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round }
+.sheet-lines { fill: none; stroke: var(--copper); stroke-width: 1.8; stroke-linecap: round }
+.linkish { color: var(--copper); text-decoration: underline; text-underline-offset: 3px }
+.hint { font-size: 0.9rem; color: var(--soft); margin-top: 4px }
+.or { margin-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--soft) }
+.error { margin-top: 14px; color: var(--red); background: color-mix(in srgb, var(--red) 9%, var(--card)); border: 1px solid color-mix(in srgb, var(--red) 35%, transparent); border-radius: 10px; padding: 10px 14px }
+.steps { display: grid; gap: 14px; counter-reset: step }
+.steps li { display: grid; grid-template-columns: auto 1fr; gap: 14px; background: var(--card); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px 18px; box-shadow: var(--shadow) }
+.steps b { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font: 600 0.95rem var(--mono) }
+.steps h2 { font: 600 1.08rem/1.25 var(--serif) }
+.steps p { color: var(--soft); font-size: 0.95rem; margin-top: 4px }
+
+.btn { border: 1px solid var(--ink); background: transparent; border-radius: 9px; padding: 8px 16px; font-weight: 600 }
+.btn.primary { background: var(--ink); color: var(--paper) }
+.btn.primary:hover { background: var(--copper); border-color: var(--copper); color: #fff }
+.btn.quiet { border-color: var(--line); font-weight: 500; padding: 6px 12px; font-size: 0.92rem; background: var(--card) }
+.btn.quiet:hover { border-color: var(--ink) }
+.link { border: 0; background: none; padding: 0; color: var(--copper); text-decoration: underline; text-underline-offset: 3px; font-size: 0.92rem }
+.link:hover { color: var(--ink) }
+
+/* Results */
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 0 14px; font-size: 0.93rem; color: var(--soft) }
+.bar b { color: var(--ink) }
+.bar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+.status { display: inline-flex; align-items: center; gap: 7px; font-size: 0.88rem }
+.status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--line) }
+.status[data-state='ready']::before { background: var(--green) }
+.status[data-state='loading']::before, .status[data-state='busy']::before { background: var(--copper); animation: pulse 1s ease-in-out infinite }
+.status[data-state='failed']::before { background: var(--red) }
+.status:empty { display: none }
+@keyframes pulse { 50% { opacity: 0.25 } }
+
+section { margin-top: 30px }
+#app > section > h2 { font: 600 1.45rem/1.2 var(--serif); display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px }
+.count { font: 600 0.8rem var(--mono); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 2px 9px; transform: translateY(-3px) }
+.section-note { color: var(--soft); max-width: 62em; margin-bottom: 12px; font-size: 0.96rem }
+.section-note b { color: var(--ink) }
+.empty { color: var(--soft); background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 16px 18px }
+
+/* The headline, drawn as a till receipt */
+#headline { margin-top: 0 }
+.receipt { background: var(--card); padding: 26px 28px 30px; box-shadow: var(--shadow); position: relative; border-radius: 4px 4px 0 0;
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat, radial-gradient(circle at 8px 0, #000 7px, transparent 7.5px) bottom left / 16px 10px repeat-x;
+  mask: linear-gradient(#000 0 0) top / 100% calc(100% - 10px) no-repeat, radial-gradient(circle at 8px 0, #000 7px, transparent 7.5px) bottom left / 16px 10px repeat-x }
+.eyebrow { font: 600 0.78rem var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft) }
+.receipt h1 { margin-top: 6px; font-family: var(--serif); font-weight: 600; line-height: 1.05 }
+.big { font: 700 clamp(3rem, 9vw, 5.2rem)/1 var(--mono); letter-spacing: -0.04em; color: var(--copper) }
+.big-after { font-size: clamp(1.3rem, 3.2vw, 2rem) }
+.sub { color: var(--soft); margin-top: 8px; max-width: 46em }
+.tiles { margin-top: 22px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px dashed var(--line) }
+.tiles > div { padding: 14px 14px 4px 0 }
+.tiles > div + div { border-left: 1px dashed var(--line); padding-left: 16px }
+.tiles dt { font-size: 0.82rem; color: var(--soft) }
+.tiles dd { font: 700 1.55rem/1.2 var(--mono); letter-spacing: -0.02em }
+.tiles small { color: var(--soft); font-size: 0.82rem }
+.sorted { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 0.88rem; color: var(--soft) }
+.sorted b { color: var(--ink); font-family: var(--mono) }
+
+/* Alerts */
+.alerts { display: grid; gap: 8px }
+.alert { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line-soft); border-left: 4px solid var(--k, var(--copper)); border-radius: 10px; padding: 12px 16px }
+.k-duplicate { --k: var(--red) } .k-trial { --k: #b0407c } .k-price_rise { --k: var(--copper) } .k-fee { --k: #8a5a2b } .k-overlap { --k: #6a6fb5 } .k-new_recurring { --k: #2f7f86 } .k-unusual { --k: #b98a12 }
+.mark { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font: 700 0.9rem var(--mono); color: var(--k); background: color-mix(in srgb, var(--k) 13%, transparent) }
+.alert h3 { font: 600 1.04rem/1.3 var(--sans) }
+.alert p { color: var(--soft); font-size: 0.94rem }
+.alert-side { text-align: right; display: grid; justify-items: end; gap: 0 }
+.alert-side b { font: 700 1.15rem var(--mono); letter-spacing: -0.02em }
+.alert-side span { font-size: 0.78rem; color: var(--soft) }
+
+/* Tables */
+.table-wrap { position: relative; background: var(--card); border: 1px solid var(--line-soft); border-radius: 12px; overflow-x: auto; box-shadow: var(--shadow) }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem }
+th, td { padding: 9px 12px; text-align: left; vertical-align: middle; border-bottom: 1px solid var(--line-soft) }
+thead th { font-size: 0.78rem; font-weight: 600; color: var(--soft); text-transform: uppercase; letter-spacing: 0.06em; background: color-mix(in srgb, var(--paper) 60%, var(--card)) }
+tbody tr:last-child > * { border-bottom: 0 }
+tbody th { font-weight: 500 }
+.who { font-weight: 600; margin-right: 4px }
+.kind { font-size: 0.8rem; color: var(--soft); white-space: nowrap }
+.rise { font-size: 0.8rem; color: var(--copper); font-weight: 600; white-space: nowrap }
+.regular input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--copper) }
+tr.stopped { color: var(--soft) }
+tr.dropped .who { text-decoration: line-through; text-decoration-color: var(--copper) }
+.back { margin-top: 10px; color: var(--soft) }
+.back.on { color: var(--ink); background: color-mix(in srgb, var(--green) 12%, var(--card)); border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); border-radius: 10px; padding: 10px 14px; display: inline-block }
+.chip { display: inline-block; font-size: 0.78rem; font-weight: 600; color: var(--c); background: color-mix(in srgb, var(--c) 13%, transparent); border-radius: 999px; padding: 1px 9px; white-space: nowrap }
+
+/* Needs a look */
+.review { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px }
+.review li { background: var(--card); border: 1px dashed var(--copper); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px }
+.review-who { display: flex; justify-content: space-between; gap: 10px; align-items: baseline }
+.review-who span { color: var(--soft); font-size: 0.86rem; white-space: nowrap }
+.review-pick { display: flex; gap: 6px; flex-wrap: wrap; align-items: center }
+.guess { border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); color: var(--c); background: color-mix(in srgb, var(--c) 10%, transparent); border-radius: 999px; padding: 4px 12px; font-size: 0.86rem; font-weight: 600 }
+.guess:hover { background: var(--c); color: var(--card) }
+select { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 4px 8px; font-size: 0.86rem; max-width: 100% }
+
+/* Where it goes */
+.where { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 20px; align-items: start }
+.where figure { background: var(--card); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px 14px 10px; box-shadow: var(--shadow) }
+.where figure svg { width: 100%; height: auto; display: block }
+figcaption { font-size: 0.82rem; color: var(--soft); margin-top: 6px }
+.seg { fill: var(--c); cursor: pointer; transition: opacity 0.15s }
+.seg.dim { opacity: 0.2 }
+.grid { stroke: var(--line-soft); stroke-width: 1 }
+.axis { font: 11px var(--mono); fill: var(--soft) }
+.total { font: 600 11px var(--mono); fill: var(--ink) }
+.cats { display: grid; gap: 2px }
+.cat-row { width: 100%; display: grid; grid-template-columns: 12px minmax(92px, 1.1fr) minmax(40px, 1fr) auto 38px; gap: 10px; align-items: center; border: 1px solid transparent; background: none; border-radius: 8px; padding: 5px 8px; text-align: left; font-size: 0.93rem }
+.cat-row:hover { background: var(--card); border-color: var(--line-soft) }
+.cat-row.on { background: var(--card); border-color: var(--ink) }
+.swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--c) }
+.cat-bar { width: 100%; height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden }
+.cat-total { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right }
+.cat-share { font: 0.8rem var(--mono); color: var(--soft); text-align: right }
+
+/* Ask */
+.ask-form { display: flex; gap: 8px }
+.ask-form input, .tools input { flex: 1; min-width: 0; border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: 10px 14px }
+.examples { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px }
+.example { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 12px; font-size: 0.86rem; color: var(--soft) }
+.example:hover { border-color: var(--copper); color: var(--ink) }
+.reply { margin-top: 14px; background: var(--card); border: 1px solid var(--line-soft); border-left: 4px solid var(--green); border-radius: 10px; padding: 14px 18px }
+.reply-main { font: 600 1.3rem/1.3 var(--serif) }
+.reply-detail { color: var(--soft); margin-top: 4px }
+.reply-how { font-size: 0.84rem; color: var(--soft); margin-top: 8px; border-top: 1px dashed var(--line); padding-top: 8px }
+
+/* Every line */
+.tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 10px }
+.tools input { max-width: 340px; padding: 8px 12px }
+.filters { display: flex; gap: 6px; flex-wrap: wrap }
+.filter { border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 3px 12px; font-size: 0.86rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.line-count { margin-left: auto; font: 0.86rem var(--mono); color: var(--soft) }
+.lines .date { white-space: nowrap; color: var(--soft); font-size: 0.9rem; width: 1% }
+.lines .desc b { font-weight: 600; display: block }
+.lines .desc small { display: block; color: var(--soft); font: 0.76rem var(--mono); overflow-wrap: anywhere }
+.lines .cat { white-space: nowrap }
+.lines .in { color: var(--green) }
+.chip-select { border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--card)); font-weight: 600; border-radius: 999px; padding: 2px 6px 2px 10px; font-size: 0.82rem }
+.chip-select:disabled { opacity: 1 }
+.why-btn { border: 0; background: none; color: var(--soft); font-size: 0.76rem; text-decoration: underline dotted; text-underline-offset: 3px; margin-left: 6px; padding: 2px }
+.why-btn.unsure { color: var(--copper); font-weight: 600 }
+tr.unsure td:first-child { box-shadow: inset 3px 0 0 var(--copper) }
+#more { margin-top: 10px }
+
+.why { position: absolute; z-index: 10; background: var(--card); border: 1px solid var(--ink); border-radius: 12px; padding: 14px 16px; box-shadow: var(--shadow); font-size: 0.92rem }
+.why h3 { font: 600 1.05rem var(--serif); margin-bottom: 6px }
+.why ol { margin: 8px 0; display: grid; gap: 4px }
+.why li { display: flex; gap: 8px; align-items: center; justify-content: space-between }
+.why li span:first-child { flex: 1; font-family: var(--mono); font-size: 0.84rem }
+.why li b { font-family: var(--mono) }
+.why p + .link { margin-top: 8px; display: inline-block }
+
+.toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); background: var(--ink); color: var(--paper); border-radius: 12px; padding: 12px 18px; max-width: min(640px, calc(100vw - 32px)); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); z-index: 30; font-size: 0.95rem }
+
+dialog { border: 1px solid var(--ink); border-radius: 14px; background: var(--card); color: var(--ink); padding: 24px 26px; max-width: min(600px, calc(100vw - 32px)) }
+dialog::backdrop { background: rgba(20, 20, 15, 0.55) }
+dialog h2 { font: 600 1.4rem var(--serif); margin-bottom: 12px }
+dialog li { margin-bottom: 10px; padding-left: 18px; position: relative; color: var(--soft) }
+dialog li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 8px; border-radius: 50%; background: var(--green) }
+dialog li b { color: var(--ink) }
+.proof { font: 0.88rem var(--mono); background: var(--line-soft); border-radius: 8px; padding: 8px 12px; margin: 12px 0 16px }
+
+.foot { max-width: 1080px; margin: 0 auto; padding: 18px 20px 44px; color: var(--soft); font-size: 0.86rem; border-top: 1px dashed var(--line); display: grid; gap: 8px }
+.foot b { color: var(--ink) }
+
+@media (max-width: 820px) {
+  .start, .where { grid-template-columns: 1fr; gap: 24px }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+  .tiles > div:nth-child(3) { border-left: 0; padding-left: 0 }
+  .tiles > div:nth-child(n + 3) { border-top: 1px dashed var(--line) }
+  .alert { grid-template-columns: 36px minmax(0, 1fr) }
+  .alert-side { grid-column: 2; justify-items: start; text-align: left; grid-auto-flow: column; gap: 8px; align-items: baseline }
+  .mark { width: 34px; height: 34px; font-size: 0.78rem }
+  .receipt { padding: 20px 18px 26px }
+  .line-count { margin-left: 0 }
+  .lines .desc small { display: none }
+  th, td { padding: 8px 9px }
+  .pill { font-size: 0.8rem }
+}
+@media (max-width: 520px) {
+  main, .top, .foot { padding-left: 14px; padding-right: 14px }
+  .why-btn { display: block; margin-left: 0 }
+  .regular td:nth-child(3), .regular th:nth-child(3) { display: none }
+  .cat-row { grid-template-columns: 12px minmax(0, 1fr) auto 34px }
+  .cat-bar { display: none }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important }
+}
+
+/* ---- Agent edition: sections drawn by src/page/main.ts ---- */
+#app section, #taught { margin-top: 26px }
+#app h2 { font: 700 1.35rem var(--serif); margin-bottom: 10px }
+#headline { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; box-shadow: var(--shadow) }
+#headline .big { font: 700 clamp(1.4rem, 4vw, 2rem)/1.2 var(--serif); color: var(--ink) }
+#headline .big span { font: 700 clamp(2.6rem, 8vw, 4.4rem)/1 var(--mono); color: var(--copper); letter-spacing: -0.04em; margin-right: 8px }
+.soft { color: var(--soft) }
+.cards { display: grid; gap: 10px }
+.card { background: var(--card); border: 1px solid var(--line-soft); border-left: 4px solid var(--k, var(--copper)); border-radius: 10px; padding: 12px 16px }
+.card h3 { font-size: 1.02rem }
+.card p { color: var(--soft); margin-top: 2px }
+.card details { margin-top: 8px }
+.card summary { cursor: pointer; color: var(--copper); font-size: 0.9rem }
+.lines { margin-top: 6px }
+.lines li { display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 10px; padding: 3px 0; border-top: 1px dashed var(--line-soft); font-size: 0.92rem }
+.lines b { font-family: var(--mono); font-weight: 500 }
+#regular table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line-soft); border-radius: 12px; overflow: hidden; font-size: 0.94rem }
+#regular th, #regular td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line-soft) }
+#regular th { font: 600 0.78rem var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--soft) }
+#regular .n { text-align: right; font-family: var(--mono) }
+#regular .stopped { color: var(--soft) }
+.tag { font-size: 0.74rem; font-weight: 700; color: var(--copper); background: var(--copper-soft); border-radius: 999px; padding: 1px 8px; white-space: nowrap }
+.bars { display: grid; gap: 6px }
+.bars li { display: grid; grid-template-columns: minmax(110px, 170px) 1fr auto; gap: 10px; align-items: center }
+.bars i { display: block; height: 10px; border-radius: 5px; background: var(--c) }
+.bars b { font-family: var(--mono); font-weight: 500; font-size: 0.9rem }
+.review { display: grid; gap: 6px }
+.review li { display: flex; justify-content: space-between; gap: 10px; align-items: center; background: var(--card); border: 1px solid var(--line-soft); border-radius: 10px; padding: 8px 14px }
+.review small { color: var(--soft) }
+select { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 5px 8px }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--paper); border-radius: 10px; padding: 9px 16px; z-index: 30; max-width: 90vw }
+.about { max-width: 1080px; margin: 36px auto 0; padding: 0 20px }
+.about h2 { font: 700 1.35rem var(--serif); margin-bottom: 8px }
+.about .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px }
+.about .panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px }
+.about code.url { display: block; margin: 8px 0; padding: 8px 10px; user-select: all }
+main { max-width: 1080px; margin: 0 auto; padding: 8px 20px 0 }
+.foot { max-width: 1080px; margin: 40px auto 30px; padding: 0 20px; color: var(--soft); font-size: 0.9rem }
+@media (max-width: 720px) { .start { grid-template-columns: 1fr } .lines li { grid-template-columns: 1fr auto } .lines li span:first-child { display: none } }
+
+/* ---- Assistant (from the agentify-website template, in this site's palette) ---- */
+.assistant { margin-top: 40px }
+.assistant h2 { font: 700 1.5rem var(--serif) }
+.assistant-note { color: var(--soft); font-size: .92rem; margin: 6px 0 }
+#assistant-status { color: var(--soft); font-size: .92rem; margin: 6px 0 }
+#agent-app {
+  --ns-font: system-ui, sans-serif;
+  --ns-bg: #ffffff;
+  --ns-fg: #1f2328;
+  --ns-primary: #a84d24;
+  --ns-accent: #8f3f1b;
+  --ns-border: #d0d7de;
+  --ns-panelbg: #ffffff;
+  --ns-msgbg: #f6f8fa;
+  --ns-muted: #59636e;
+}
+
+.assistant-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Set the height once the runtime has mounted the chat, so a failed load leaves no
+   empty box. */
+#agent-app.ns-composed-app [data-ns-slot="chat"] { height: 720px; }
+/* The runtime gives the chat no background of its own. Keep --ns-msgbg different from
+   --ns-bg, or bot replies lose their bubble. */
+#agent-app .ns-chat { background: var(--ns-bg); }
+
+/* Site-wide form rules often stretch the runtime's own controls. Undo them here. */
+#agent-app input[type="checkbox"],
+#agent-app input[type="radio"] { width: auto; }
+#agent-app .ns-header { flex-wrap: wrap; }
+/* Site label rules add margins and bold text, and the inputs inside the labels inherit
+   the weight. */
+#agent-app .ns-settings-body label { margin: 4px 0; font-weight: 400; }
+/* Chat forms label radio groups with a legend, so site legend fonts would reach them. */
+#agent-app .ns-w-label { font-family: inherit; }
+/* Site label rules add margins to chat form fields and make their options bold. */
+#agent-app .ns-widget label { margin: 0; }
+#agent-app .ns-w-radio label,
+#agent-app .ns-w-multi label,
+#agent-app .ns-w-toggle { font-weight: 400; }
+/* The runtime sizes radio and multi-choice options but not the checkbox label. */
+#agent-app .ns-w-toggle { font-size: 13px; }
+/* The runtime spaces its buttons with gap. A site's button margin pushes Send below the input. */
+#agent-app button { margin: 0; }
+/* Chat choices are buttons with a light background. A site's button color can hide their
+   titles. */
+#agent-app .ns-w-choice { color: var(--ns-fg); }
+/* A site's button:hover background also reaches the runtime's plain buttons, behind
+   their dark text. Keep the runtime's own backgrounds. */
+#agent-app .ns-devtoggle:not(.on):hover,
+#agent-app .ns-modal-close:hover { background: transparent; }
+#agent-app .ns-w-choice:disabled:hover { background: #fafbfc; }
+/* The runtime's message rule hides the partner consent card's own background, and its
+   Decline label then has too little contrast. */
+#agent-app .ns-consent { background: #fffbeb; }
+/* While a consent card waits, the status line above it already says "Contacting", though
+   nothing has been sent. Hide it until the visitor answers. */
+#agent-app .ns-msgs:has(.ns-consent-actions) > .ns-turn-status { display: none; }
+/* Long links in a reply would run out of the bubble on a phone. "anywhere" would also
+   let the consent card's buttons shrink and split their labels. */
+#agent-app .ns-msg { overflow-wrap: break-word; }
+/* On a phone the consent card is too narrow for its three buttons in one row, and
+   "Always allow" breaks onto two lines. Keep each label whole and wrap the row. */
+#agent-app .ns-consent-actions { flex-wrap: wrap; }
+#agent-app .ns-consent-actions button { white-space: nowrap; }
+
+/* site.js and the runtime add their confirmation dialogs to <body>, outside #agent-app.
+   Site h2 rules reach the heading, and the two buttons touch. A right margin keeps
+   wrapped buttons lined up on the left. */
+body > dialog h2 { margin: 0 0 12px; font: 700 1.25em system-ui, sans-serif; }
+body > dialog button { margin-right: 8px; }
+/* site.js's dialog: the details in two columns, and a plain decline button, so the two
+   choices do not look the same. */
+.assistant-review { max-width: 640px; width: 85%; max-height: 85vh; overflow: auto; border: 1px solid #888; border-radius: 12px; padding: 24px; font: 16px system-ui, sans-serif; }
+.assistant-review dl { display: grid; grid-template-columns: fit-content(40%) 1fr; gap: 4px 16px; margin: 12px 0; }
+.assistant-review dt { font-weight: 600; }
+.assistant-review dd { margin: 0; overflow-wrap: anywhere; }
+.assistant-review details { margin: 12px 0; }
+.assistant-review pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.assistant-review .assistant-decline { background: transparent; color: inherit; border: 1px solid currentColor; }
+
+@media (max-width: 760px) {
+  .assistant-panels { grid-template-columns: 1fr; }
+  /* On a phone, each detail goes under its label, so an email is not split. */
+  .assistant-review dl { grid-template-columns: 1fr; gap: 0; }
+  .assistant-review dd { margin-bottom: 8px; }
+}

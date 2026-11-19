@@ -1,0 +1,11 @@
+{
+  "networks": [
+    {
+      "name": "loose_change_agent"
+    }
+  ],
+  "actions": {
+    "version": 1,
+    "module": "./bridge-actions.js"
+  }
+}

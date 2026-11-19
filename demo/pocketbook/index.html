@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocketbook (demo caller for Loose Change agent)</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="main.js"></script>
+<script type="module" src="site.js"></script>
+</head>
+<body>
+<header class="top"><span class="brand"><span>Pocketbook</span></span><span class="pill"><span class="dot"></span><span>Demo: another agentic site that calls Loose Change</span></span></header>
+<main id="main">
+  <h1>Your monthly budget</h1>
+  <p class="lead">Pocketbook is a tiny budgeting page. Its assistant has no way to read a bank statement, so it asks the Loose Change agent, a different website. That site's network runs here, in your browser, on your own AI key.</p>
+  <div id="budget" class="card" style="margin-top:18px"></div>
+  <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+    <h2 id="assistant-heading">Ask Pocketbook</h2>
+    <p>Try “Review my bank statement privately and tell me which budget lines I am over.” You will get a card asking whether Pocketbook may contact Loose Change, then a window on that site where you pick the file.</p>
+    <p id="assistant-status" role="status">Connecting the assistant…</p>
+    <div id="agent-app">
+      <div data-ns-slot="header"></div>
+      <div class="assistant-panels"><div data-ns-slot="chat"></div><div data-ns-slot="agents"></div></div>
+      <div data-ns-slot="settings"></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
