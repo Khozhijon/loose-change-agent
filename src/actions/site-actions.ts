@@ -30,7 +30,7 @@ function loadSampleAction() {
 function setCategoriesAction() {
   return {
     name: 'set_categories',
-    description: 'Put merchants in spending categories, for merchants listed in needsALook or that the visitor says are filed wrongly. Give all of them in one call (up to 30). Call it only when the visitor asks or agrees. Use each merchant name exactly as get_statement_state shows it, and a category id from categoriesYouCanUse. It changes every line of those merchants, and the visitor can undo each on the page. Returns one result per merchant, with ok false and a reason for any that is not in the statement.',
+    description: 'Put merchants in spending categories, for merchants listed in needsALook or that the visitor says are filed wrongly. Give all of them in one call (up to 30). Call it when the visitor asks you to place, file or categorise merchants (that request is the agreement: do not ask again), or says a merchant is filed wrongly. Use each merchant name exactly as get_statement_state shows it, and a category id from categoriesYouCanUse. It changes every line of those merchants, and the visitor can undo each on the page. Returns one result per merchant, with ok false and a reason for any that is not in the statement.',
     effect: 'write',
     inputSchema: {
       type: 'object',

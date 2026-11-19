@@ -89,7 +89,7 @@ node tools/agentify-skill/scripts/check_partner.mjs https://khozhijon.github.io/
 ## Run it
 
 Needs Node 22.18+ (for running TypeScript directly) and, to try the assistant, an AI key from any supported provider.
-Google AI Studio has a free tier.
+Google AI Studio has a free tier (tested with `models/gemini-3.1-flash-lite`; the busier Gemini models can answer 503 or hang at peak times, so type another model name under Advanced settings if one stalls).
 
 ```sh
 npm install

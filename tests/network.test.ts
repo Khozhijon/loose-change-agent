@@ -30,7 +30,7 @@ test('page actions are local, bridge actions are bridge-only with caller origins
 
 test('irreversible and write actions say when to call them', () => {
   for (const a of collect(pageActions)) {
-    if (a.effect !== 'read') assert.match(a.description, /only when the visitor (asks|agrees)|Call it only when/i, a.name)
+    if (a.effect !== 'read') assert.match(a.description, /only when the visitor|when the visitor asks/i, a.name)
   }
 })
 
