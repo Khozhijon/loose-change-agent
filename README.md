@@ -9,7 +9,7 @@ rules do not know, and can save a report. Other agent websites can call it too.
 **Network address (for other agent sites):** `https://khozhijon.github.io/loose-change-agent/loose_change_agent`
 **Demo caller (another agentic site that uses this one):** https://khozhijon.github.io/loose-change-agent/pocketbook/
 
-Built with help from [Claude Code](https://claude.com/claude-code). See [Credits and licences](#credits-and-licences).
+Lead developer: Khozhijon. I led the project from idea to submission and directed an AI pair-programmer (Claude Code) that helped write the code, which I reviewed and tested. See [Credits and licences](#credits-and-licences).
 
 ## Why an agent, and why this one
 
@@ -141,5 +141,5 @@ visitor's own assistant places merchants, and the visitor can see and undo each 
   and nsDeploy, Apache License 2.0 (see `LICENSE-agentic-web-APACHE-2.0.txt` and `site/runtime/LICENSE.txt`), used
   unchanged. Neuro SAN is the agent-network format.
 - `src/core/`: from Loose Change, MIT, by the same author.
-- Built with help from Claude Code.
+- Lead developer: Khozhijon. I led the project from idea to submission and directed an AI pair-programmer (Claude Code) that helped write the code, which I reviewed and tested.
 - Loose Change does not give financial advice. It adds up what a statement already says.
