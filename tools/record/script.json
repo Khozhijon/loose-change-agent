@@ -1,0 +1,10 @@
+{
+  "title": "Loose Change agent: an open agentic website for private bank statements",
+  "parts": [
+    {"id": 1, "label": "Start page", "minSec": 12, "text": "Hi, I'm Khozhijon. This is Loose Change agent, an open agentic website. Your statement never leaves this tab, and the AI is the one you choose."},
+    {"id": 2, "label": "Sample statement and alerts", "minSec": 13, "text": "Drop in a bank statement and the page finds forgotten subscriptions, price rises, double charges and bank fees. Seven hundred ninety-one dollars a year in this sample, with plain rules and no AI."},
+    {"id": 3, "label": "The assistant", "minSec": 22, "text": "Now the assistant. It runs in my browser on my own Gemini key and reads the page through tools, so every number comes from a tool, not from the model. It can also file the merchants the rules do not know, and I can undo every choice."},
+    {"id": 4, "label": "Another site calls it", "minSec": 28, "text": "Here is the open agentic web part. Pocketbook is a different site with no statement tools. I ask it to review my statement privately. It asks Loose Change, and I must allow it. A window opens on Loose Change, I pick the file there, so it never passes through Pocketbook or its AI, and only a summary I have read goes back."},
+    {"id": 5, "label": "Network file and source", "minSec": 19, "text": "The network is a public Neuro SAN file, so any agent site can call it. It is open source. I led the project from idea to submission and directed an AI pair-programmer that helped write the code, which I reviewed and tested. Thanks for watching."}
+  ]
+}

@@ -342,7 +342,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 8px 20px 0 }
 
 /* Set the height once the runtime has mounted the chat, so a failed load leaves no
    empty box. */
-#agent-app.ns-composed-app [data-ns-slot="chat"] { height: 720px; }
+#agent-app.ns-composed-app [data-ns-slot="chat"] { height: min(720px, 72vh); min-height: 420px; }
 /* The runtime gives the chat no background of its own. Keep --ns-msgbg different from
    --ns-bg, or bot replies lose their bubble. */
 #agent-app .ns-chat { background: var(--ns-bg); }
