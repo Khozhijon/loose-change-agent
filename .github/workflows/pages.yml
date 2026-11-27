@@ -1,5 +1,7 @@
 # Publishes the site (and the Pocketbook demo caller at /pocketbook/) to GitHub Pages on every push to main.
 # One-time setup in the repository: Settings > Pages > Source: "GitHub Actions".
+# Two jobs: "build" makes and uploads the artifact, "deploy" publishes it. Splitting them follows the
+# official pattern and fixes the failure "No artifacts named github-pages were found" (run 45546164932).
 name: Publish site
 on:
   push:
@@ -11,13 +13,10 @@ permissions:
   id-token: write
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -31,6 +30,14 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: _pages
-      - id: deploy
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4
